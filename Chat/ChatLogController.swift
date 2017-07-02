@@ -19,7 +19,7 @@ class ChatLogController: BaseChatViewController {
     override func createPresenterBuilders() -> [ChatItemType : [ChatItemPresenterBuilderProtocol]] {
         return [ChatItemType : [ChatItemPresenterBuilderProtocol]]()
     }
-
+    
     
     override func createChatInputView() -> UIView {
         let inputbar = ChatInputBar.loadNib()
@@ -39,22 +39,25 @@ class ChatLogController: BaseChatViewController {
     func handleSend () -> TextChatInputItem{
         let item = TextChatInputItem()
         item.textInputHandler = { text in
-            print(text)
+            //            print(text)
+            
+            let message = MessageModel(uid: "", senderId: "", type: "", isIncoming: false, date: Date(), status: .success)
+            let textMessage = TextModel(messageModel: message, text: text)
         }
         
-        return item 
+        return item
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    
+        
     }
-
-
+    
+    
 }
 
