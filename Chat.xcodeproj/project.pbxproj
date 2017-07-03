@@ -11,6 +11,7 @@
 		4D0C4CAC1F09541200C697E2 /* TextModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0C4CAB1F09541200C697E2 /* TextModel.swift */; };
 		4D7DBF0E1F0AA9B0000611EE /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7DBF0D1F0AA9B0000611EE /* DataSource.swift */; };
 		4D7DBF101F0AAAD2000611EE /* ChatItemsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7DBF0F1F0AAAD2000611EE /* ChatItemsController.swift */; };
+		4D7DBF121F0AB046000611EE /* Decorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7DBF111F0AB046000611EE /* Decorator.swift */; };
 		4DD1E1B61F0949FF000A7A27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD1E1B51F0949FF000A7A27 /* AppDelegate.swift */; };
 		4DD1E1B81F0949FF000A7A27 /* ChatLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD1E1B71F0949FF000A7A27 /* ChatLogController.swift */; };
 		4DD1E1BB1F0949FF000A7A27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DD1E1B91F0949FF000A7A27 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 		4D0C4CAB1F09541200C697E2 /* TextModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextModel.swift; sourceTree = "<group>"; };
 		4D7DBF0D1F0AA9B0000611EE /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		4D7DBF0F1F0AAAD2000611EE /* ChatItemsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatItemsController.swift; sourceTree = "<group>"; };
+		4D7DBF111F0AB046000611EE /* Decorator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decorator.swift; sourceTree = "<group>"; };
 		4DD1E1B21F0949FF000A7A27 /* Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DD1E1B51F0949FF000A7A27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DD1E1B71F0949FF000A7A27 /* ChatLogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogController.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				4DD1E1B51F0949FF000A7A27 /* AppDelegate.swift */,
 				4DD1E1B71F0949FF000A7A27 /* ChatLogController.swift */,
 				4D7DBF0D1F0AA9B0000611EE /* DataSource.swift */,
+				4D7DBF111F0AB046000611EE /* Decorator.swift */,
 				4D7DBF0F1F0AAAD2000611EE /* ChatItemsController.swift */,
 				4D0C4CAA1F0953FD00C697E2 /* Text Message */,
 				4DD1E1B91F0949FF000A7A27 /* Main.storyboard */,
@@ -234,6 +237,7 @@
 				4D7DBF0E1F0AA9B0000611EE /* DataSource.swift in Sources */,
 				4DD1E1B61F0949FF000A7A27 /* AppDelegate.swift in Sources */,
 				4D7DBF101F0AAAD2000611EE /* ChatItemsController.swift in Sources */,
+				4D7DBF121F0AB046000611EE /* Decorator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
