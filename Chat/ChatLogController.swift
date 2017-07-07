@@ -14,11 +14,17 @@ import ChattoAdditions
 class ChatLogController: BaseChatViewController {
     
     var presenter: BasicChatInputBarPresenter!
+    
     var dataSource  = DataSource()
     var decorator = Decorator()
     
+    
     override func createPresenterBuilders() -> [ChatItemType : [ChatItemPresenterBuilderProtocol]] {
-        return [ChatItemType : [ChatItemPresenterBuilderProtocol]]()
+        
+        let textMessageBulider = TextMessagePresenterBuilder(viewModelBuilder: TextBuilder(),
+                                                             interactionHandler: TextHandler())
+        
+        return [TextModel.chatItemType : [textMessageBulider]]
     }
     
     
@@ -41,9 +47,12 @@ class ChatLogController: BaseChatViewController {
         let item = TextChatInputItem()
         item.textInputHandler = { text in
             
+            let date = Date()
+            let double = Double(date.timeIntervalSinceReferenceDate)
             
+            let senderID = "me"
             
-            let message = MessageModel(uid: "", senderId: "", type: "", isIncoming: false, date: Date(), status: .success)
+            let message = MessageModel(uid: "\(double,senderID)", senderId: senderID , type: TextModel.chatItemType, isIncoming: false, date: date, status: .success)
             
             let textMessage = TextModel(messageModel: message, text: text)
             
