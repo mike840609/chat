@@ -18,7 +18,8 @@ class DataSource: ChatDataSourceProtocol{
     
     init(totalMessages : [ChatItemProtocol]){
         self.controller.totalMessages = totalMessages
-        self.controller.loadIntoItemsArray()
+        // paging 0 - 50
+        self.controller.loadIntoItemsArray(messagedNeeded: min(totalMessages.count , 50))
     }
     
     // protocol ===============================================================================

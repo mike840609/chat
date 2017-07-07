@@ -15,8 +15,12 @@ class ChatItemsController{
     var items = [ChatItemProtocol]()
     var totalMessages = [ChatItemProtocol]()
     
-    func loadIntoItemsArray(){
-        self.items = self.totalMessages
+    func loadIntoItemsArray(messagedNeeded : Int){
+        
+        for index in stride(from: totalMessages.count, to: totalMessages.count - messagedNeeded, by: -1){
+                self.items.insert(totalMessages[index - 1], at: 0)
+        }
+        
     }
     
     func insertItem(message : ChatItemProtocol){
