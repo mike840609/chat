@@ -11,6 +11,9 @@ import Chatto
 import ChattoAdditions
 
 class PhotoModel : PhotoMessageModel<MessageModel>{
+    
+    static let chatItemType  = "photo"
+    
     override init(messageModel: MessageModel, imageSize: CGSize, image: UIImage) {
         super.init(messageModel: messageModel, imageSize: imageSize, image: image)
     }

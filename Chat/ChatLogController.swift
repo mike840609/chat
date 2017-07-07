@@ -24,7 +24,12 @@ class ChatLogController: BaseChatViewController {
         let textMessageBulider = TextMessagePresenterBuilder(viewModelBuilder: TextBuilder(),
                                                              interactionHandler: TextHandler())
         
-        return [TextModel.chatItemType : [textMessageBulider]]
+        let photoPresenterBuilder = PhotoMessagePresenterBuilder(viewModelBuilder: PhotoBuilder(),
+                                                                 interactionHandler: PhotoHanderler())
+        
+        
+        return [TextModel.chatItemType : [textMessageBulider] ,
+                PhotoModel.chatItemType : [photoPresenterBuilder]]
     }
     
     
@@ -73,7 +78,7 @@ class ChatLogController: BaseChatViewController {
             
             let senderID = "me"
             
-            let message = MessageModel(uid: "\(double,senderID)", senderId: senderID , type: "", isIncoming: false, date: date, status: .success)
+            let message = MessageModel(uid: "\(double,senderID)", senderId: senderID , type: PhotoModel.chatItemType, isIncoming: false, date: date, status: .success)
             
             let photoMessage = PhotoModel(messageModel: message, imageSize: photo.size, image: photo)
             
