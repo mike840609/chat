@@ -99,6 +99,7 @@ class ChatLogController: BaseChatViewController {
             let message = MessageModel(uid: "\(i)", senderId: "", type: TextModel.chatItemType, isIncoming: false, date: Date(), status: .success)
             self.totalMessage.append(TextModel(messageModel: message, text: "\(i)"))
         }
+        self.dataSource = DataSource(totalMessages: self.totalMessage)
         
         self.chatDataSource = self.dataSource
         self.chatItemsDecorator = self.decorator
