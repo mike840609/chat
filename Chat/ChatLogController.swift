@@ -36,7 +36,7 @@ class ChatLogController: BaseChatViewController {
         appearance.textInputAppearance.placeholderText = "Type a message"
         
         self.presenter = BasicChatInputBarPresenter(chatInputBar: inputbar,
-                                                    chatInputItems: [handleSend()],
+                                                    chatInputItems: [handleSend() ,handlephoto()],
                                                     chatInputBarAppearance: appearance)
         
         return inputbar
@@ -56,11 +56,34 @@ class ChatLogController: BaseChatViewController {
             
             let textMessage = TextModel(messageModel: message, text: text)
             
-            self.dataSource.addTextMessage(message: textMessage)
+            self.dataSource.addMessage(message: textMessage)
         }
         
         return item
     }
+    
+    
+    func handlephoto() -> PhotosChatInputItem {
+        let item = PhotosChatInputItem(presentingController: self)
+        
+        item.photoInputHandler = { photo in
+            
+            let date = Date()
+            let double = Double(date.timeIntervalSinceReferenceDate)
+            
+            let senderID = "me"
+            
+            let message = MessageModel(uid: "\(double,senderID)", senderId: senderID , type: "", isIncoming: false, date: date, status: .success)
+            
+            let photoMessage = PhotoModel(messageModel: message, imageSize: photo.size, image: photo)
+            
+            self.dataSource.addMessage(message: photoMessage)
+            
+        }
+        
+        return item
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
