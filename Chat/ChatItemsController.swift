@@ -31,4 +31,8 @@ class ChatItemsController{
     func loadPrevious (){
         self.loadIntoItemsArray(messagedNeeded: min(totalMessages.count - items.count, 50))
     }
+    
+    func adjustWindows (){
+        self.items.removeFirst(200)
+    }
 }

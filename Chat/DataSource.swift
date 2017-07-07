@@ -49,7 +49,18 @@ class DataSource: ChatDataSourceProtocol{
     }
     
     func adjustNumberOfMessages(preferredMaxCount: Int?, focusPosition: Double, completion: (Bool) -> Void) {
-        completion(false)
+        
+        if focusPosition > 0.9{
+            
+            self.controller.adjustWindows()
+            completion(true)
+        
+        }else{
+            
+            completion(false)
+        }
+        
+        
     }
     
     

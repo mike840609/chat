@@ -104,6 +104,8 @@ class ChatLogController: BaseChatViewController {
         self.chatDataSource = self.dataSource
         self.chatItemsDecorator = self.decorator
         
+        self.constants.preferredMaxMessageCount = 300
+        
     }
     
     
