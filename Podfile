@@ -9,7 +9,7 @@ target 'Chat' do
 
 pod 'Chatto', '= 3.1.0'
 pod 'ChattoAdditions', '= 3.1.0'
-
+pod 'Firebase/Core'
 
 
 end
