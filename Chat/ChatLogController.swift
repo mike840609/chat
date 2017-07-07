@@ -14,9 +14,9 @@ import ChattoAdditions
 class ChatLogController: BaseChatViewController {
     
     var presenter: BasicChatInputBarPresenter!
-    
-    var dataSource  = DataSource()
+    var dataSource  : DataSource!
     var decorator = Decorator()
+    var totalMessage = [ChatItemProtocol]()
     
     
     override func createPresenterBuilders() -> [ChatItemType : [ChatItemPresenterBuilderProtocol]] {
@@ -90,18 +90,21 @@ class ChatLogController: BaseChatViewController {
     }
     
     
+    
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        for i in 1...295{
+            let message = MessageModel(uid: "\(i)", senderId: "", type: TextModel.chatItemType, isIncoming: false, date: Date(), status: .success)
+            self.totalMessage.append(TextModel(messageModel: message, text: "\(i)"))
+        }
         
         self.chatDataSource = self.dataSource
         self.chatItemsDecorator = self.decorator
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
-    }
     
     
 }

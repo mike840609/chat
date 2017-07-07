@@ -13,6 +13,11 @@ import ChattoAdditions
 class ChatItemsController{
     
     var items = [ChatItemProtocol]()
+    var totalMessages = [ChatItemProtocol]()
+    
+    func loadIntoItemsArray(){
+        self.items = self.totalMessages
+    }
     
     func insertItem(message : ChatItemProtocol){
         self.items.append(message)
