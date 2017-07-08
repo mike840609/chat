@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SignInViewController: UIViewController {
 
@@ -30,6 +31,18 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func SignIn(_ sender: Any) {
+        
+        guard let email = email.text , let psd = password.text else { return}
+        
+        Auth.auth().signIn(withEmail: email, password: psd) { (user, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            print("success")
+        }
+        
+    
         
     }
 
