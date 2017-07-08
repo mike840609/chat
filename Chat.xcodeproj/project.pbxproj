@@ -15,6 +15,13 @@
 		4D508FA91F0FCA3000D09F3E /* PhotoBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D508FA81F0FCA3000D09F3E /* PhotoBuilder.swift */; };
 		4D508FAB1F0FCCBB00D09F3E /* PhotoHanderler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D508FAA1F0FCCBB00D09F3E /* PhotoHanderler.swift */; };
 		4D508FAD1F0FEA6700D09F3E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D508FAC1F0FEA6700D09F3E /* GoogleService-Info.plist */; };
+		4D508FB11F10C5D300D09F3E /* MaterialTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D508FAE1F10C5D300D09F3E /* MaterialTextField.swift */; };
+		4D508FB21F10C5D300D09F3E /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D508FAF1F10C5D300D09F3E /* MaterialView.swift */; };
+		4D508FB31F10C5D300D09F3E /* MaterialButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D508FB01F10C5D300D09F3E /* MaterialButton.swift */; };
+		4D508FB61F10C65A00D09F3E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D508FB51F10C65A00D09F3E /* Constants.swift */; };
+		4D508FB81F10CC8800D09F3E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D508FB71F10CC8800D09F3E /* SignInViewController.swift */; };
+		4D508FBA1F10CC9B00D09F3E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D508FB91F10CC9B00D09F3E /* SignUpViewController.swift */; };
+		4D508FBC1F10CE9D00D09F3E /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D508FBB1F10CE9D00D09F3E /* Helpers.swift */; };
 		4D7DBF0E1F0AA9B0000611EE /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7DBF0D1F0AA9B0000611EE /* DataSource.swift */; };
 		4D7DBF101F0AAAD2000611EE /* ChatItemsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7DBF0F1F0AAAD2000611EE /* ChatItemsController.swift */; };
 		4D7DBF121F0AB046000611EE /* Decorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7DBF111F0AB046000611EE /* Decorator.swift */; };
@@ -33,6 +40,13 @@
 		4D508FA81F0FCA3000D09F3E /* PhotoBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBuilder.swift; sourceTree = "<group>"; };
 		4D508FAA1F0FCCBB00D09F3E /* PhotoHanderler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoHanderler.swift; sourceTree = "<group>"; };
 		4D508FAC1F0FEA6700D09F3E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4D508FAE1F10C5D300D09F3E /* MaterialTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialTextField.swift; sourceTree = "<group>"; };
+		4D508FAF1F10C5D300D09F3E /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
+		4D508FB01F10C5D300D09F3E /* MaterialButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialButton.swift; sourceTree = "<group>"; };
+		4D508FB51F10C65A00D09F3E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4D508FB71F10CC8800D09F3E /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		4D508FB91F10CC9B00D09F3E /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		4D508FBB1F10CE9D00D09F3E /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		4D7DBF0D1F0AA9B0000611EE /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		4D7DBF0F1F0AAAD2000611EE /* ChatItemsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatItemsController.swift; sourceTree = "<group>"; };
 		4D7DBF111F0AB046000611EE /* Decorator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decorator.swift; sourceTree = "<group>"; };
@@ -89,6 +103,17 @@
 			name = "Photo Message";
 			sourceTree = "<group>";
 		};
+		4D508FB41F10C61200D09F3E /* MateriaUI */ = {
+			isa = PBXGroup;
+			children = (
+				4D508FB51F10C65A00D09F3E /* Constants.swift */,
+				4D508FAE1F10C5D300D09F3E /* MaterialTextField.swift */,
+				4D508FAF1F10C5D300D09F3E /* MaterialView.swift */,
+				4D508FB01F10C5D300D09F3E /* MaterialButton.swift */,
+			);
+			name = MateriaUI;
+			sourceTree = "<group>";
+		};
 		4DD1E1A91F0949FE000A7A27 = {
 			isa = PBXGroup;
 			children = (
@@ -111,12 +136,16 @@
 			isa = PBXGroup;
 			children = (
 				4DD1E1B51F0949FF000A7A27 /* AppDelegate.swift */,
+				4D508FB71F10CC8800D09F3E /* SignInViewController.swift */,
+				4D508FB91F10CC9B00D09F3E /* SignUpViewController.swift */,
 				4DD1E1B71F0949FF000A7A27 /* ChatLogController.swift */,
 				4D7DBF0D1F0AA9B0000611EE /* DataSource.swift */,
 				4D7DBF111F0AB046000611EE /* Decorator.swift */,
 				4D7DBF0F1F0AAAD2000611EE /* ChatItemsController.swift */,
+				4D508FB41F10C61200D09F3E /* MateriaUI */,
 				4D508FA51F0FC63F00D09F3E /* Photo Message */,
 				4D0C4CAA1F0953FD00C697E2 /* Text Message */,
+				4D508FBB1F10CE9D00D09F3E /* Helpers.swift */,
 				4DD1E1B91F0949FF000A7A27 /* Main.storyboard */,
 				4DD1E1BC1F0949FF000A7A27 /* Assets.xcassets */,
 				4DD1E1BE1F0949FF000A7A27 /* LaunchScreen.storyboard */,
@@ -262,11 +291,18 @@
 				4D508FA91F0FCA3000D09F3E /* PhotoBuilder.swift in Sources */,
 				4D508FA71F0FC66200D09F3E /* PhotoModel.swift in Sources */,
 				4D508FAB1F0FCCBB00D09F3E /* PhotoHanderler.swift in Sources */,
+				4D508FB21F10C5D300D09F3E /* MaterialView.swift in Sources */,
 				4D508FA01F0F78F100D09F3E /* TextBuilder.swift in Sources */,
+				4D508FBA1F10CC9B00D09F3E /* SignUpViewController.swift in Sources */,
+				4D508FB61F10C65A00D09F3E /* Constants.swift in Sources */,
 				4D0C4CAC1F09541200C697E2 /* TextModel.swift in Sources */,
+				4D508FB11F10C5D300D09F3E /* MaterialTextField.swift in Sources */,
 				4DD1E1B81F0949FF000A7A27 /* ChatLogController.swift in Sources */,
+				4D508FB31F10C5D300D09F3E /* MaterialButton.swift in Sources */,
 				4D7DBF0E1F0AA9B0000611EE /* DataSource.swift in Sources */,
 				4DD1E1B61F0949FF000A7A27 /* AppDelegate.swift in Sources */,
+				4D508FBC1F10CE9D00D09F3E /* Helpers.swift in Sources */,
+				4D508FB81F10CC8800D09F3E /* SignInViewController.swift in Sources */,
 				4D7DBF101F0AAAD2000611EE /* ChatItemsController.swift in Sources */,
 				4D7DBF121F0AB046000611EE /* Decorator.swift in Sources */,
 				4D508FA21F0F7D3D00D09F3E /* TextHandler.swift in Sources */,
