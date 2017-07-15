@@ -12,5 +12,8 @@ pod 'ChattoAdditions', '= 3.1.0'
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
 pod 'Firebase/Database'
+pod 'SwiftyJSON'
+
+pod 'FirebaseUI/Database' , ' ~> 4.0'
 
 end

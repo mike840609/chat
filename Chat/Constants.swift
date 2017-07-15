@@ -19,3 +19,7 @@ let SEGUE_LOGGED_IN = "loggedIn"
 
 //Status Codes
 let STATUS_ACCOUNT_NONEXIST = -8
+
+
+let USERS = "Users"
+let CONTACTS = "Contacts"

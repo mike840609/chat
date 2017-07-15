@@ -110,7 +110,6 @@
 		4D508FB41F10C61200D09F3E /* MateriaUI */ = {
 			isa = PBXGroup;
 			children = (
-				4D508FB51F10C65A00D09F3E /* Constants.swift */,
 				4D508FAE1F10C5D300D09F3E /* MaterialTextField.swift */,
 				4D508FAF1F10C5D300D09F3E /* MaterialView.swift */,
 				4D508FB01F10C5D300D09F3E /* MaterialButton.swift */,
@@ -157,6 +156,7 @@
 				4DD1E1BE1F0949FF000A7A27 /* LaunchScreen.storyboard */,
 				4DD1E1C11F0949FF000A7A27 /* Info.plist */,
 				4D508FAC1F0FEA6700D09F3E /* GoogleService-Info.plist */,
+				4D508FB51F10C65A00D09F3E /* Constants.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
