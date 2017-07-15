@@ -1,5 +1,5 @@
 //
-//  MaterialTextField.swift
+//  MateriaTextField.swift
 //  SocialNetwork
 //
 //  Created by 蔡鈞 on 2016/3/20.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-class MaterialTextField: UITextField {
-
+class MateriaTextField: UITextField {
+    
     override func awakeFromNib() {
         
         layer.cornerRadius = 2.0
@@ -28,5 +28,5 @@ class MaterialTextField: UITextField {
         return bounds.insetBy(dx: 10, dy: 0)
     }
     
-
+    
 }
