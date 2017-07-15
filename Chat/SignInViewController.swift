@@ -40,7 +40,12 @@ class SignInViewController: UIViewController {
                 self?.alert(message: error.localizedDescription)
                 return
             }
-            print("success")
+            
+            
+            let vc = self?.storyboard?.instantiateViewController(withIdentifier: "MessagesTable") as! MessagesTableViewController
+            
+            self?.navigationController?.show(vc, sender: nil)
+
         }
         
     
@@ -50,7 +55,7 @@ class SignInViewController: UIViewController {
     @IBAction func SignUp(_ sender: Any) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "SIGNUP") as! SignUpViewController
         
-        self.present(controller, animated: true, completion: nil)
+        self.navigationController?.show(controller, sender: nil)
     }
  
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

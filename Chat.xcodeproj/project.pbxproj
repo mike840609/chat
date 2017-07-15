@@ -25,6 +25,8 @@
 		4D7DBF0E1F0AA9B0000611EE /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7DBF0D1F0AA9B0000611EE /* DataSource.swift */; };
 		4D7DBF101F0AAAD2000611EE /* ChatItemsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7DBF0F1F0AAAD2000611EE /* ChatItemsController.swift */; };
 		4D7DBF121F0AB046000611EE /* Decorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7DBF111F0AB046000611EE /* Decorator.swift */; };
+		4D86BE831F19F41C00C444DC /* MessagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D86BE821F19F41B00C444DC /* MessagesTableViewController.swift */; };
+		4D86BE851F19F43E00C444DC /* MessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D86BE841F19F43E00C444DC /* MessagesTableViewCell.swift */; };
 		4DD1E1B61F0949FF000A7A27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD1E1B51F0949FF000A7A27 /* AppDelegate.swift */; };
 		4DD1E1B81F0949FF000A7A27 /* ChatLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD1E1B71F0949FF000A7A27 /* ChatLogController.swift */; };
 		4DD1E1BB1F0949FF000A7A27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DD1E1B91F0949FF000A7A27 /* Main.storyboard */; };
@@ -50,6 +52,8 @@
 		4D7DBF0D1F0AA9B0000611EE /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		4D7DBF0F1F0AAAD2000611EE /* ChatItemsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatItemsController.swift; sourceTree = "<group>"; };
 		4D7DBF111F0AB046000611EE /* Decorator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decorator.swift; sourceTree = "<group>"; };
+		4D86BE821F19F41B00C444DC /* MessagesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesTableViewController.swift; sourceTree = "<group>"; };
+		4D86BE841F19F43E00C444DC /* MessagesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesTableViewCell.swift; sourceTree = "<group>"; };
 		4DD1E1B21F0949FF000A7A27 /* Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DD1E1B51F0949FF000A7A27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DD1E1B71F0949FF000A7A27 /* ChatLogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogController.swift; sourceTree = "<group>"; };
@@ -146,6 +150,8 @@
 				4D508FA51F0FC63F00D09F3E /* Photo Message */,
 				4D0C4CAA1F0953FD00C697E2 /* Text Message */,
 				4D508FBB1F10CE9D00D09F3E /* Helpers.swift */,
+				4D86BE821F19F41B00C444DC /* MessagesTableViewController.swift */,
+				4D86BE841F19F43E00C444DC /* MessagesTableViewCell.swift */,
 				4DD1E1B91F0949FF000A7A27 /* Main.storyboard */,
 				4DD1E1BC1F0949FF000A7A27 /* Assets.xcassets */,
 				4DD1E1BE1F0949FF000A7A27 /* LaunchScreen.storyboard */,
@@ -292,6 +298,7 @@
 				4D508FA71F0FC66200D09F3E /* PhotoModel.swift in Sources */,
 				4D508FAB1F0FCCBB00D09F3E /* PhotoHanderler.swift in Sources */,
 				4D508FB21F10C5D300D09F3E /* MaterialView.swift in Sources */,
+				4D86BE831F19F41C00C444DC /* MessagesTableViewController.swift in Sources */,
 				4D508FA01F0F78F100D09F3E /* TextBuilder.swift in Sources */,
 				4D508FBA1F10CC9B00D09F3E /* SignUpViewController.swift in Sources */,
 				4D508FB61F10C65A00D09F3E /* Constants.swift in Sources */,
@@ -304,6 +311,7 @@
 				4D508FBC1F10CE9D00D09F3E /* Helpers.swift in Sources */,
 				4D508FB81F10CC8800D09F3E /* SignInViewController.swift in Sources */,
 				4D7DBF101F0AAAD2000611EE /* ChatItemsController.swift in Sources */,
+				4D86BE851F19F43E00C444DC /* MessagesTableViewCell.swift in Sources */,
 				4D7DBF121F0AB046000611EE /* Decorator.swift in Sources */,
 				4D508FA21F0F7D3D00D09F3E /* TextHandler.swift in Sources */,
 			);
