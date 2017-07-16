@@ -14,7 +14,7 @@ import SwiftyJSON
 
 
 class MessagesTableViewController: UIViewController {
-
+    
     let Contacts = FUIArray(query: Database.database().reference()
         .child(USERS).child(Auth.auth().currentUser!.uid).child(CONTACTS))
     
@@ -22,7 +22,7 @@ class MessagesTableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         
         // observe array
         self.Contacts.observeQuery()
@@ -33,7 +33,7 @@ class MessagesTableViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -51,7 +51,7 @@ class MessagesTableViewController: UIViewController {
         
     }
     
-
+    
     func presentAlert(){
         let alertController = UIAlertController(title: "Email?", message: "Please write the email : ", preferredStyle: .alert)
         alertController.addTextField { (textField) in
@@ -74,7 +74,7 @@ class MessagesTableViewController: UIViewController {
     func addContact(email:String){
         
         Database.database().reference().child("Users").observeSingleEvent(of: .value, with: { [weak self] (snapshot) in
-          
+            
             print(snapshot)
             
             let snapshot = JSON(snapshot.value as Any).dictionaryValue
@@ -84,14 +84,33 @@ class MessagesTableViewController: UIViewController {
                 return value["email"].stringValue == email
                 
             }){
-                Database.database().reference().child("Users").child(Auth.auth().currentUser!.uid)
+                Database.database().reference().child(USERS).child(Auth.auth().currentUser!.uid)
                     .child("Contacts")
                     .child(snapshot[index].key)
                     .updateChildValues(["email" : snapshot[index].value["email"].stringValue ,
                                         "name" : snapshot[index].value["name"].stringValue])
                 
+                
+                Database.database().reference().child(USERS).child(snapshot[index].key)
+                    .child("Contacts")
+                    .child(Auth.auth().currentUser!.uid)
+                    .updateChildValues(["email" : Auth.auth().currentUser!.email! ,
+                                        "name" : Auth.auth().currentUser!.displayName!])
+                
+                let allUpdates =
+                    ["/Users/\(Auth.auth().currentUser!.uid)/Contacts/\(snapshot[index].key)":
+                        (["email" : snapshot[index].value["email"].stringValue ,"name" : snapshot[index].value["name"].stringValue]),
+                     
+                     "/Users/\(snapshot[index].key)/Contacts/\(Auth.auth().currentUser!.uid)":
+                        (["email" : Auth.auth().currentUser!.email! ,"name" : Auth.auth().currentUser!.displayName!])
+                    ]
+                
+                Database.database().reference().updateChildValues(allUpdates)
+                
+                
+                
                 self?.alert(message: "success")
-            
+                
             }else{
                 
                 self?.alert(message: "no such email")
@@ -103,7 +122,7 @@ class MessagesTableViewController: UIViewController {
 }
 
 extension MessagesTableViewController : FUICollectionDelegate{
- 
+    
     func array(_ array: FUICollection, didAdd object: Any, at index: UInt) {
         self.tableView.insertRows(at: [IndexPath(row : Int(index) , section : 0)], with: .automatic)
     }

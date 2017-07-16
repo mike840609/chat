@@ -23,6 +23,10 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         
         
+        NotificationCenter.default.addObserver(self, selector: #selector (showingKeyboard), name: Notification.Name(rawValue: "UIKeyboardWillShowNotification"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector (hidingKeyboard), name: Notification.Name(rawValue: "UIKeyboardWillHideNotification"), object: nil)
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -42,7 +46,11 @@ class SignUpViewController: UIViewController {
             }
             
             // store the data to database
-            Database.database().reference().child("Users").child(user!.uid).updateChildValues(["email" : email , "name" : fullname])
+            Database.database().reference().child(USERS).child(user!.uid).updateChildValues(["email" : email , "name" : fullname])
+            
+            let changeRequest = user!.createProfileChangeRequest()
+            changeRequest.displayName = fullname
+            changeRequest.commitChanges(completion: nil)
             
             let vc = self?.storyboard?.instantiateViewController(withIdentifier: "MessagesTable") as! MessagesTableViewController
             
@@ -54,6 +62,8 @@ class SignUpViewController: UIViewController {
     }
     
     
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
 }
