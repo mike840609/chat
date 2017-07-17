@@ -20,4 +20,13 @@ class TextModel:TextMessageModel<MessageModel>{
     
     }
     
+    var status: MessageStatus{
+        get{
+            return self._messageModel.status
+        }
+        set{
+            self._messageModel.status = newValue
+        }
+    }
+    
 }

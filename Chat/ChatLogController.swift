@@ -9,6 +9,8 @@
 import UIKit
 import Chatto
 import ChattoAdditions
+import FirebaseAuth
+import FirebaseDatabase
 
 
 class ChatLogController: BaseChatViewController {
@@ -16,7 +18,8 @@ class ChatLogController: BaseChatViewController {
     var presenter: BasicChatInputBarPresenter!
     var dataSource  : DataSource!
     var decorator = Decorator()
-    var totalMessage = [ChatItemProtocol]()
+    
+    var userUID = String()
     
     
     override func createPresenterBuilders() -> [ChatItemType : [ChatItemPresenterBuilderProtocol]] {
@@ -50,18 +53,21 @@ class ChatLogController: BaseChatViewController {
     
     func handleSend () -> TextChatInputItem{
         let item = TextChatInputItem()
-        item.textInputHandler = { [weak self]text in
+        item.textInputHandler = { [weak self] text in
             
             let date = Date()
             let double = Double(date.timeIntervalSinceReferenceDate)
             
-            let senderID = "me"
+            let senderID = Auth.auth().currentUser!.uid
+            let messageUID = (senderID + "\(double)").replacingOccurrences(of: ".", with: "")
             
-            let message = MessageModel(uid: "\(double,senderID)", senderId: senderID , type: TextModel.chatItemType, isIncoming: false, date: date, status: .success)
+            let message = MessageModel(uid: messageUID, senderId: senderID , type: TextModel.chatItemType, isIncoming: false, date: date, status: .sending)
             
             let textMessage = TextModel(messageModel: message, text: text)
             
             self?.dataSource.addMessage(message: textMessage)
+            
+            self?.sendOnlineTextMessage(text: text, uid: messageUID, double: double, senderId: senderID)
         }
         
         return item
@@ -90,16 +96,26 @@ class ChatLogController: BaseChatViewController {
     }
     
     
+    func sendOnlineTextMessage (text:String , uid:String ,double:Double ,senderId : String){
+        
+        let message = ["text " :text , "uid ":uid , "date ":double  , "senderId":senderId , "status": "success"] as [String :Any]
+        
+        let childUpdates = ["User-messages/\(senderId)/\(self.userUID)/\(uid)":message ,
+                            "User-messages/\(self.userUID)/\(senderId)/\(uid)":message ,]
+        
+        Database.database().reference().updateChildValues(childUpdates) { (error, _) in
+            if error != nil{
+                self.dataSource.updateTextMessage(uid: uid, status: .failed)
+            }
+            self.dataSource.updateTextMessage(uid: uid, status: .success)
+        }
+    }
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
-        for i in 1...295{
-            let message = MessageModel(uid: "\(i)", senderId: "", type: TextModel.chatItemType, isIncoming: false, date: Date(), status: .success)
-            self.totalMessage.append(TextModel(messageModel: message, text: "\(i)"))
-        }
-        self.dataSource = DataSource(totalMessages: self.totalMessage)
         
         self.chatDataSource = self.dataSource
         self.chatItemsDecorator = self.decorator
@@ -107,6 +123,7 @@ class ChatLogController: BaseChatViewController {
         self.constants.preferredMaxMessageCount = 300
         
     }
+    
     
     
     

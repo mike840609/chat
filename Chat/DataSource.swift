@@ -73,6 +73,14 @@ class DataSource: ChatDataSourceProtocol{
         
     }
     
-    
+    func updateTextMessage (uid :String , status : MessageStatus){
+        if let index = self.controller.items.index(where: { (message) -> Bool in
+            return message.uid == uid
+        }){
+            let message = self.controller.items[index] as! TextModel
+            message.status = status
+            self.delegate?.chatDataSourceDidUpdate(self)
+        }
+    }
     
 }
