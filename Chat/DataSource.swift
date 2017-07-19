@@ -12,19 +12,19 @@ import ChattoAdditions
 
 class DataSource: ChatDataSourceProtocol{
     
-
     
     var controller = ChatItemsController()
     
-    init(totalMessages : [ChatItemProtocol]){
-        self.controller.totalMessages = totalMessages
+    init(initialMessages : [ChatItemProtocol]){
+        self.controller.totalMessages = initialMessages
         // paging 0 - 50
-        self.controller.loadIntoItemsArray(messagedNeeded: min(totalMessages.count , 50))
+        self.controller.loadIntoItemsArray(messagedNeeded: min(initialMessages.count , 50))
     }
     
     // protocol ===============================================================================
     
-    var delegate: ChatDataSourceDelegateProtocol?
+    // use weak var to avoid memory leak
+    weak var delegate: ChatDataSourceDelegateProtocol?
     
     var chatItems: [ChatItemProtocol]{
         return controller.items
@@ -35,7 +35,8 @@ class DataSource: ChatDataSourceProtocol{
         return false
     }
     var hasMorePrevious: Bool{
-        return controller.totalMessages.count - controller.items.count > 0
+        return false
+        // return controller.totalMessages.count - controller.items.count > 0
     }
     
     func loadNext() {
@@ -72,6 +73,7 @@ class DataSource: ChatDataSourceProtocol{
         self.delegate?.chatDataSourceDidUpdate(self)
         
     }
+    
     
     func updateTextMessage (uid :String , status : MessageStatus){
         if let index = self.controller.items.index(where: { (message) -> Bool in

@@ -16,7 +16,7 @@ import Chatto
 class MessagesTableViewController: UIViewController {
     
     let Contacts = FUIArray(query: Database.database().reference()
-        .child(USERS).child(Auth.auth().currentUser!.uid).child(CONTACTS))
+        .child(USERS).child(Me.uid).child(CONTACTS))
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -30,8 +30,9 @@ class MessagesTableViewController: UIViewController {
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        self.tableView.tableFooterView = UIView(frame: .zero)
         
-        // Do any additional setup after loading the view.
+        Database.database().reference().child("User-messages").child(Me.uid).keepSynced(true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -85,7 +86,7 @@ class MessagesTableViewController: UIViewController {
                 
             }){
                 
-                Database.database().reference().child(USERS).child(Auth.auth().currentUser!.uid)
+                Database.database().reference().child(USERS).child(Me.uid)
                     .child("Contacts")
                     .child(snapshot[index].key)
                     .updateChildValues(["email" : snapshot[index].value["email"].stringValue ,
@@ -94,15 +95,15 @@ class MessagesTableViewController: UIViewController {
                 
                 Database.database().reference().child(USERS).child(snapshot[index].key)
                     .child("Contacts")
-                    .child(Auth.auth().currentUser!.uid)
+                    .child(Me.uid)
                     .updateChildValues(["email" : Auth.auth().currentUser!.email! ,
                                         "name" : Auth.auth().currentUser!.displayName!])
                 
                 let allUpdates =
-                    ["/Users/\(Auth.auth().currentUser!.uid)/Contacts/\(snapshot[index].key)":
+                    ["/Users/\(Me.uid)/Contacts/\(snapshot[index].key)":
                         (["email" : snapshot[index].value["email"].stringValue ,"name" : snapshot[index].value["name"].stringValue]),
                      
-                     "/Users/\(snapshot[index].key)/Contacts/\(Auth.auth().currentUser!.uid)":
+                     "/Users/\(snapshot[index].key)/Contacts/\(Me.uid)":
                         (["email" : Auth.auth().currentUser!.email! ,"name" : Auth.auth().currentUser!.displayName!])
                     ]
                 
@@ -162,12 +163,30 @@ extension MessagesTableViewController: UITableViewDelegate , UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let chatlog = ChatLogController()
-        let uid = (Contacts[UInt(indexPath.row)] as? DataSnapshot)?.key
-        chatlog.userUID = uid!
-        chatlog.dataSource = DataSource(totalMessages: [ChatItemProtocol]())
-        self.navigationController?.show(chatlog, sender: nil)
-        self.tableView.deselectRow(at: indexPath, animated: true)
+        
+        let uid = (Contacts[UInt(indexPath.row)] as? DataSnapshot)!.key
+        let reference = Database.database().reference().child("User-messages").child(Me.uid).child(uid)
+            .queryLimited(toLast: 51)
+        self.tableView.isUserInteractionEnabled = false
+        
+        
+        reference.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            let messages = Array(JSON(snapshot.value as Any).dictionaryValue.values).sorted(by: { (lhs, rhs) -> Bool in
+                return lhs["date"].doubleValue < rhs["date"].doubleValue
+            })
+            
+            let converted = self.convertToChatItemProcotol(messages: messages)
+            
+            
+            let chatlog = ChatLogController()
+            chatlog.userUID = uid
+            chatlog.dataSource = DataSource(initialMessages: converted)
+            self.navigationController?.show(chatlog, sender: nil)
+            self.tableView.deselectRow(at: indexPath, animated: true)
+            self.tableView.isUserInteractionEnabled = true
+        })
+        
         
     }
 }

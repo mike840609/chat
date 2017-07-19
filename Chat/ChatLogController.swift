@@ -58,7 +58,7 @@ class ChatLogController: BaseChatViewController {
             let date = Date()
             let double = Double(date.timeIntervalSinceReferenceDate)
             
-            let senderID = Auth.auth().currentUser!.uid
+            let senderID = Me.uid
             let messageUID = (senderID + "\(double)").replacingOccurrences(of: ".", with: "")
             
             let message = MessageModel(uid: messageUID, senderId: senderID , type: TextModel.chatItemType, isIncoming: false, date: date, status: .sending)
@@ -98,7 +98,7 @@ class ChatLogController: BaseChatViewController {
     
     func sendOnlineTextMessage (text:String , uid:String ,double:Double ,senderId : String){
         
-        let message = ["text " :text , "uid ":uid , "date ":double  , "senderId":senderId , "status": "success"] as [String :Any]
+        let message = ["text" : text , "uid" : uid , "date" : double  , "senderId" : senderId , "status": "success" , "type" : TextModel.chatItemType ] as [String :Any]
         
         let childUpdates = ["User-messages/\(senderId)/\(self.userUID)/\(uid)":message ,
                             "User-messages/\(self.userUID)/\(senderId)/\(uid)":message ,]
@@ -125,7 +125,10 @@ class ChatLogController: BaseChatViewController {
     }
     
     
-    
+    // fix memeory leak
+    deinit {
+        print("deinit")
+    }
     
 }
 
